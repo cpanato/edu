@@ -54,6 +54,11 @@ jobs:
           service_account: "github-chainguard-academy@chainguard-academy.iam.gserviceaccount.com"
           workload_identity_provider: "projects/456977358484/locations/global/workloadIdentityPools/chainguard-academy/providers/chainguard-edu"
 
+
+      - name: configure docker
+        run: |
+          gcloud auth configure-docker
+
       - name: apko login
         shell: bash
         working-directory: /tmp/
@@ -92,4 +97,4 @@ jobs:
 
       # - name: cosign sign image
       #  working-directory: terminal-images/${{ matrix.image }}
-      #  run: cosign sign -y "$(cat image-refs.txt)"
+      #  run: cosign sign -y "$(cat image-refs.txt)
